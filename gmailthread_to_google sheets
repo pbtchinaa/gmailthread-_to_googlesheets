@@ -1,0 +1,17 @@
+function getemails() {
+
+label = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1fv5dDhhTxPFGe3W8BSqNLVVv6eCLrx6oHW3cmiAUArk/edit#gid=0").getSheetByName("Manage").getRange("B1").getValue();
+
+
+    var label = GmailApp.getUserLabelByName(label);
+    var threads = label.getThreads(); // ARRAY 
+
+   
+   for (i=0;i<threads.length;i++)
+   {
+
+      SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1fv5dDhhTxPFGe3W8BSqNLVVv6eCLrx6oHW3cmiAUArk/edit#gid=0").getSheetByName("Gmail thread").getRange("A"+(i+1)).setValue(threads[i].getMessages()[0].getPlainBody())
+      
+   }
+   
+      }
